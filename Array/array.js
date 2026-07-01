@@ -80,7 +80,7 @@
 // motor = new_motor.concat(new_motor_2)
 // console.log(motor)
 
-let salary = [23, 35, 42, 52, 52, 63, 68, 34, 63, 61, 97, 77];
+// let salary = [23, 35, 42, 52, 52, 63, 68, 34, 63, 61, 97, 77];
 // let sum = 0;
 // for (initialization, condition, increment)
 // for (let i = 0; i < salary.length; i++) {
@@ -91,8 +91,57 @@ let salary = [23, 35, 42, 52, 52, 63, 68, 34, 63, 61, 97, 77];
 // }
 // console.log("Total Salary:", sum);
 
+/*
 let multiple = 1;
 for (let i = 1; i < salary.length + 1; i++) {
   multiple = multiple * i;
 }
 console.log(multiple);
+*/
+
+// Array Props
+const names = ['Sok', 'Tola', 'Meng', 'Kosal'];
+
+Array.prototype.myForEach = function (cbf) {
+  for (let i = 0; i < this.length; i++) {
+    (cbf(this[i], i), this);
+  }
+};
+
+names.myForEach(function (item) {
+  console.log(item);
+});
+
+// Reduce Method
+const salary = [300, 500, 400, 200];
+// a = 0; c = 300 => 300;
+// a = 300; c = 500 => 800;
+// a = 800; c = 400 => 1200;
+// a = 1200; c = 200 => 1400;
+const total = salary.reduce(function (ac, cr) {
+  // Return as number
+  return ac + cr;
+}, 0);
+console.log(total);
+
+const array = ['Heng', 'Menghoy'];
+// let fullName = '';
+
+/*
+array.forEach(function (i) {
+  fullName += i;
+});
+console.log(fullName);
+*/
+
+// ac = "" cr = "Heng" => " Heng"
+// ac = " Heng" cr = "Menghoy" =>  "Heng Menghoy"
+const fullName = array.reduce(function (ac, cr) {
+  return `${ac} ${cr}`;
+}, '');
+console.log(fullName);
+
+const fullNameNoSpace = array.reduce(function (ac, cr) {
+  return `${ac} ${cr}`;
+});
+console.log(fullNameNoSpace);
